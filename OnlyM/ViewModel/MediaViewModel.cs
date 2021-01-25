@@ -176,6 +176,15 @@
 
         public bool SubTitleTextIsNotEmpty => !string.IsNullOrEmpty(SubTitleText);
 
+        public int Height { get; set; } = 500;
+
+        public int Width { get; set; } = 500;
+
+        public ResizeMode ResizeMode
+        {
+            get { return ResizeMode.CanResize; }
+        }
+
         private MagnifierShape MagnifierShape
         {
             get => _optionsService.MagnifierShape;
@@ -190,6 +199,7 @@
                 }
             }
         }
+
 
         private void HandleRenderingMethodChangedEvent(object sender, System.EventArgs e)
         {

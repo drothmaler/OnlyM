@@ -155,6 +155,19 @@
                           Content="{x:Static resx:Resources.MEDIA_WINDOWED}"
                           Style="{StaticResource SettingsCheckBoxStyle}"/>
 
+                <StackPanel Orientation="Vertical" Margin="25,0,0,0" IsEnabled="{Binding MediaWindowed, Mode=OneWay}">
+                    <RadioButton GroupName="WindowSize" Content="Resizable" IsChecked="{Binding MediaWindowResizable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></RadioButton>
+                    <RadioButton GroupName="WindowSize" Content="Fixed: 720p" IsChecked="{Binding MediaWindowFixed720P, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></RadioButton>
+                    <RadioButton GroupName="WindowSize" Content="Fixed: 1080p" IsChecked="{Binding MediaWindowFixed1080P, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></RadioButton>
+                    <RadioButton GroupName="WindowSize" IsChecked="{Binding MediaWindowFixedCustom, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <StackPanel Orientation="Horizontal" IsEnabled="{Binding MediaWindowFixedCustom, Mode=OneWay}">
+                            <TextBlock Text="Fixed: Custom" />
+                            <TextBox Text="{Binding MediaWindowWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="50" TextAlignment="Center" ></TextBox>
+                            <TextBlock Text="x"/>
+                            <TextBox Text="{Binding MediaWindowHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="50" TextAlignment="Center" ></TextBox>
+                    </StackPanel></RadioButton>
+                </StackPanel>
+
                 <CheckBox IsChecked="{Binding WindowedAlwaysOnTop, Mode=TwoWay}"
                           Content="{x:Static resx:Resources.MEDIA_WINDOWED_ON_TOP}"
                           Style="{StaticResource SettingsCheckBoxStyle}"/>

@@ -45,7 +45,13 @@
         private readonly MagnifierSizeItem[] _magnifierSizes;
 
         private bool _isMediaActive;
-        
+        private bool _mediaWindowFixed720P;
+        private bool _mediaWindowFixed1080P;
+        private int? _mediaWindowWidth = 1280;
+        private int? _mediaWindowHeight = 720;
+        private bool _mediaWindowResizable;
+        private bool _mediaWindowFixedCustom;
+
         public SettingsViewModel(
             IPageService pageService, 
             IMonitorsService monitorsService,
@@ -870,6 +876,52 @@
                     }
                 }
             }
+        }
+
+        public bool MediaWindowResizable
+        {
+            get => _mediaWindowResizable;
+            set => Set(ref _mediaWindowResizable, value);
+        }
+
+        public bool MediaWindowFixed720P
+        {
+            get => _mediaWindowFixed720P;
+            set
+            {
+                MediaWindowWidth = 1280;
+                MediaWindowHeight = 720;
+                Set(ref _mediaWindowFixed720P, value);
+            }
+        }
+
+        public bool MediaWindowFixed1080P
+        {
+            get => _mediaWindowFixed1080P;
+            set
+            {
+                MediaWindowWidth = 1920;
+                MediaWindowHeight = 1080;
+                Set(ref _mediaWindowFixed1080P, value);
+            }
+        }
+
+        public bool MediaWindowFixedCustom
+        {
+            get => _mediaWindowFixedCustom;
+            set => Set(ref _mediaWindowFixedCustom, value);
+        }
+
+        public int? MediaWindowWidth
+        {
+            get => _mediaWindowWidth;
+            set => Set(ref _mediaWindowWidth, value);
+        }
+
+        public int? MediaWindowHeight
+        {
+            get => _mediaWindowHeight;
+            set => Set(ref _mediaWindowHeight, value);
         }
 
         private void OnShutDown(ShutDownMessage obj)
